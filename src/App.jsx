@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 // Update these two values before launch.
-const CONTACT_EMAIL = 'ziontech.office@gmail.com';
-const WHATSAPP_NUMBER = '917010144926';
+const CONTACT_EMAIL = 'hello@ziontech.in';
+const WHATSAPP_NUMBER = '919999999999';
 
 const services = [
   { icon: '◈', title: 'Business Websites', text: 'Professional, fast websites that make your business easier to discover, trust and contact.', bullets: ['Mobile-first design', 'WhatsApp & enquiry integration', 'Maps, forms & analytics'] },
@@ -65,7 +65,7 @@ function App() {
     <div className="site">
       <header className="nav">
         <button className="brand" onClick={() => go('home')} aria-label="Zion Tech home">
-          <span className="brand-mark">Z</span><span>Zion<span className="accent">Tech</span></span>
+          <img className="brand-logo" src="/zion-tech-symbol.png" alt="" aria-hidden="true" /><span>Zion<span className="accent">Tech</span></span>
         </button>
         <nav className={menu ? 'nav-links open' : 'nav-links'}>
           {['home','solutions','industries','process','work'].map((item) => <button key={item} onClick={() => go(item)}>{item === 'work' ? 'Work' : item[0].toUpperCase()+item.slice(1)}</button>)}
@@ -144,7 +144,7 @@ function App() {
         </section>
       </main>
 
-      <footer><div className="footer-main"><button className="brand" onClick={() => go('home')}><span className="brand-mark">Z</span><span>Zion<span className="accent">Tech</span></span></button><p>Practical software for growing businesses.</p><div className="footer-links"><button onClick={() => go('solutions')}>Solutions</button><button onClick={() => go('industries')}>Industries</button><button onClick={() => go('process')}>Process</button><button onClick={() => go('contact')}>Contact</button></div></div><div className="footer-bottom"><span>© 2026 Zion Tech. All rights reserved.</span><span>Built with purpose, not complexity.</span></div></footer>
+      <footer><div className="footer-main"><button className="brand" onClick={() => go('home')}><img className="brand-logo" src="/zion-tech-symbol.png" alt="" aria-hidden="true" /><span>Zion<span className="accent">Tech</span></span></button><p>Practical software for growing businesses.</p><div className="footer-links"><button onClick={() => go('solutions')}>Solutions</button><button onClick={() => go('industries')}>Industries</button><button onClick={() => go('process')}>Process</button><button onClick={() => go('contact')}>Contact</button></div></div><div className="footer-bottom"><span>© 2026 Zion Tech. All rights reserved.</span><span>Built with purpose, not complexity.</span></div></footer>
     </div>
   );
 }
