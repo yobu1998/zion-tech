@@ -67,3 +67,9 @@ WhatsApp buttons open `+91 7010144926` with a pre-filled enquiry message.
 ### Important
 
 The website never contains your Gmail password. If you later want a fully branded transactional-email system, we can move the form to a provider such as Resend/Formspree with a server-side or Vercel function integration.
+
+## Recent fixes
+- Demo/portfolio visuals are now served locally from `public/demos/` instead of relying on external Unsplash URLs.
+- Added a visible WhatsApp button in the desktop header.
+- Added a persistent floating WhatsApp CTA on desktop and mobile.
+- WhatsApp uses Zion Tech number `+91 7010144926` and a pre-filled enquiry message.

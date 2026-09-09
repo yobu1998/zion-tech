@@ -33,12 +33,13 @@ const process = [
 ];
 
 const demos = [
-  { tag: 'Concept project', title: 'Clinic Operations', text: 'Appointments, patient records, billing and follow-ups in one simple dashboard.', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80' },
-  { tag: 'Concept project', title: 'Distributor Hub', text: 'Orders, inventory, customers and outstanding payments without spreadsheet chaos.', image: 'https://images.unsplash.com/photo-1586528116493-da8b0c4a7d7e?auto=format&fit=crop&w=1000&q=80' },
-  { tag: 'Concept project', title: 'Institute Manager', text: 'Student records, fees, attendance and reports built for a growing training centre.', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1000&q=80' },
+  { tag: 'Concept project', title: 'Clinic Operations', text: 'Appointments, patient records, billing and follow-ups in one simple dashboard.', image: '/demos/clinic-operations.svg' },
+  { tag: 'Concept project', title: 'Distributor Hub', text: 'Orders, inventory, customers and outstanding payments without spreadsheet chaos.', image: '/demos/distributor-hub.svg' },
+  { tag: 'Concept project', title: 'Institute Manager', text: 'Student records, fees, attendance and reports built for a growing training centre.', image: '/demos/institute-manager.svg' },
 ];
 
 function Icon({ children }) { return <span className="icon-box">{children}</span>; }
+function WhatsAppIcon() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.95L.05 24l6.3-1.65a11.85 11.85 0 0 0 5.71 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.43ZM12.07 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.23-.37a9.88 9.88 0 1 1 8.37 4.63Zm5.42-7.4c-.3-.15-1.78-.88-2.05-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.04-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.09 4.49.71.31 1.26.5 1.69.64.71.23 1.35.2 1.86.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.12-.27-.2-.57-.35Z"/></svg>; }
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -92,7 +93,7 @@ function App() {
           {['home','solutions','industries','process','work'].map((item) => <button key={item} onClick={() => go(item)}>{item === 'work' ? 'Work' : item[0].toUpperCase()+item.slice(1)}</button>)}
           <button className="mobile-cta" onClick={() => go('contact')}>Let's talk</button>
         </nav>
-        <button className="nav-cta" onClick={() => go('contact')}>Let's talk <span>↗</span></button>
+        <div className="nav-actions"><a className="nav-whatsapp" href={WHATSAPP_URL} target="_blank" rel="noreferrer"><span className="wa-icon"><WhatsAppIcon /></span> WhatsApp</a><button className="nav-cta" onClick={() => go('contact')}>Let's talk <span>↗</span></button></div>
         <button className="menu-btn" onClick={() => setMenu(!menu)} aria-label="Toggle menu">{menu ? '×' : '☰'}</button>
       </header>
 
@@ -152,7 +153,7 @@ function App() {
 
         <section id="work" className="work section-pad dark-section">
           <div className="section-head"><span className="section-kicker">DEMO WORK</span><h2>See what your <span>business system</span> could look like.</h2><p>These are concept projects used to demonstrate the types of systems Zion Tech can build. Real client case studies will be added as we grow.</p></div>
-          <div className="demo-grid">{demos.map((d) => <article className="demo-card" key={d.title}><img src={d.image} alt=""/><div className="demo-body"><span>{d.tag}</span><h3>{d.title}</h3><p>{d.text}</p><button onClick={() => go('contact')}>Discuss a similar system ↗</button></div></article>)}</div>
+          <div className="demo-grid">{demos.map((d) => <article className="demo-card" key={d.title}><img src={d.image} alt={`${d.title} concept dashboard`}/><div className="demo-body"><span>{d.tag}</span><h3>{d.title}</h3><p>{d.text}</p><button onClick={() => go('contact')}>Discuss a similar system ↗</button></div></article>)}</div>
         </section>
 
         <section className="why section-pad">
@@ -166,6 +167,10 @@ function App() {
       </main>
 
       <footer><div className="footer-main"><button className="brand" onClick={() => go('home')}><img className="brand-logo" src="/zion-tech-symbol.png" alt="" aria-hidden="true" /><span>Zion<span className="accent">Tech</span></span></button><p>Practical software for growing businesses.</p><div className="footer-links"><button onClick={() => go('solutions')}>Solutions</button><button onClick={() => go('industries')}>Industries</button><button onClick={() => go('process')}>Process</button><button onClick={() => go('contact')}>Contact</button></div></div><div className="footer-bottom"><span>© 2026 Zion Tech. All rights reserved.</span><span>Built with purpose, not complexity.</span></div></footer>
+      <a className="whatsapp-float" href={WHATSAPP_URL} target="_blank" rel="noreferrer" aria-label="Chat with Zion Tech on WhatsApp">
+        <span className="whatsapp-float-icon"><WhatsAppIcon /></span>
+        <span className="whatsapp-float-copy"><strong>Chat on WhatsApp</strong><small>Quick business enquiry</small></span>
+      </a>
     </div>
   );
 }

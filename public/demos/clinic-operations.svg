@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10232b"/><stop offset="1" stop-color="#071015"/></linearGradient></defs>
+<rect width="1000" height="520" fill="url(#g)"/><circle cx="790" cy="100" r="170" fill="#53e6d5" opacity=".08"/>
+<rect x="70" y="70" width="860" height="380" rx="24" fill="#0d171e" stroke="#53e6d5" stroke-opacity=".2"/>
+<text x="105" y="125" fill="#53e6d5" font-family="Arial" font-size="18" font-weight="700">CLINIC OPERATIONS</text>
+<text x="105" y="160" fill="#81909b" font-family="Arial" font-size="13">Today's overview</text>
+<rect x="105" y="195" width="250" height="90" rx="12" fill="#111f27"/><text x="125" y="225" fill="#84949f" font-family="Arial" font-size="12">Appointments</text><text x="125" y="260" fill="#fff" font-family="Arial" font-size="28" font-weight="700">42</text>
+<rect x="375" y="195" width="250" height="90" rx="12" fill="#111f27"/><text x="395" y="225" fill="#84949f" font-family="Arial" font-size="12">Patients</text><text x="395" y="260" fill="#fff" font-family="Arial" font-size="28" font-weight="700">186</text>
+<rect x="645" y="195" width="250" height="90" rx="12" fill="#111f27"/><text x="665" y="225" fill="#84949f" font-family="Arial" font-size="12">Follow-ups</text><text x="665" y="260" fill="#53e6d5" font-family="Arial" font-size="28" font-weight="700">17</text>
+<rect x="105" y="315" width="790" height="90" rx="12" fill="#0a1218"/><text x="125" y="350" fill="#84949f" font-family="Arial" font-size="12">Automated workflow</text><rect x="125" y="370" width="150" height="8" rx="4" fill="#53e6d5"/><rect x="300" y="370" width="180" height="8" rx="4" fill="#23424a"/><rect x="505" y="370" width="130" height="8" rx="4" fill="#23424a"/><rect x="660" y="370" width="180" height="8" rx="4" fill="#23424a"/>
+</svg>
