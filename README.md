@@ -1,16 +1,52 @@
-# React + Vite
+# Zion Tech — Business Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite one-page marketing site for Zion Tech, focused on business websites, automation and custom software.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Requirements: Node.js 20+ recommended.
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Open the local URL shown by Vite.
 
-## Expanding the ESLint configuration
+## Production build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+npm run preview
+```
+
+The production files are generated in `dist/`.
+
+## Before launch
+
+Update the placeholder contact details in `src/App.jsx`:
+
+- `CONTACT_EMAIL in src/App.jsx`
+- `WHATSAPP_NUMBER in src/App.jsx`
+
+Replace them with your real business email and WhatsApp number.
+
+## Deploy on Vercel
+
+1. Push this project to GitHub.
+2. Sign in to Vercel.
+3. Add a new project and import the GitHub repository.
+4. Framework preset: Vite.
+5. Build command: `npm run build`.
+6. Output directory: `dist`.
+7. Deploy.
+
+Vercel will provide a `.vercel.app` address. Add your custom domain from the Vercel project settings when ready.
+
+## Contact form
+
+The current form uses a `mailto:` action so it can work without a backend. For a production lead system, connect it later to a form/email service or your own API. The WhatsApp link is also a direct external link.
+
+## Important
+
+The portfolio cards are explicitly labelled as concept projects. Replace them with real client case studies as you build your client base.
