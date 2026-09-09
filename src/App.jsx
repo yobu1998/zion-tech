@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 // Update these two values before launch.
-const CONTACT_EMAIL = 'hello@ziontech.in';
-const WHATSAPP_NUMBER = '919999999999';
+const CONTACT_EMAIL = 'ziontech.office@gmail.com';
+const WHATSAPP_NUMBER = '917010144926';
+const WHATSAPP_MESSAGE = 'Hi Zion Tech, I would like to discuss a website or software solution for my business.';
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 const services = [
   { icon: '◈', title: 'Business Websites', text: 'Professional, fast websites that make your business easier to discover, trust and contact.', bullets: ['Mobile-first design', 'WhatsApp & enquiry integration', 'Maps, forms & analytics'] },
@@ -53,12 +56,30 @@ function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Zion Tech enquiry - ${form.business || form.name}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nBusiness: ${form.business}\nPhone: ${form.phone}\nNeed: ${form.need}\nMessage: ${form.message}`);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          business: form.business,
+          phone: form.phone,
+          need: form.need,
+          message: form.message,
+          _subject: `New Zion Tech enquiry - ${form.business || form.name}`,
+          _captcha: 'false'
+        })
+      });
+      if (!response.ok) throw new Error('Submission failed');
+      const result = await response.json().catch(() => ({ success: true }));
+      if (result.success === false) throw new Error(result.message || 'Submission failed');
+      setSubmitted(true);
+      setForm({ name: '', business: '', phone: '', need: '', message: '' });
+    } catch (error) {
+      window.location.href = WHATSAPP_URL;
+    }
   };
 
   return (
@@ -140,7 +161,7 @@ function App() {
         </section>
 
         <section id="contact" className="contact section-pad dark-section">
-          <div className="contact-grid"><div><span className="section-kicker">START A PROJECT</span><h2>Have a manual process that <span>wastes your team's time?</span></h2><p>Tell us how you currently manage it. We'll help you identify what can be automated and what a practical solution could look like.</p><div className="contact-points"><a href={`mailto:${CONTACT_EMAIL}`}>✉ {CONTACT_EMAIL}</a><a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">◉ WhatsApp us</a><span>⌖ Serving businesses across India</span></div></div><div className="form-card">{submitted ? <div className="success"><div className="success-icon">✓</div><h3>Enquiry prepared.</h3><p>Your email app should open with the project details. If it didn't, write to <strong>{CONTACT_EMAIL}</strong>.</p><button className="btn primary" onClick={() => setSubmitted(false)}>Send another enquiry</button></div> : <form onSubmit={submit}><div className="form-row"><label>Name<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Your name"/></label><label>Business<input required value={form.business} onChange={e=>setForm({...form,business:e.target.value})} placeholder="Business name"/></label></div><div className="form-row"><label>Phone / WhatsApp<input required value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="Your number"/></label><label>What do you need?<select required value={form.need} onChange={e=>setForm({...form,need:e.target.value})}><option value="">Select one</option><option>Business website</option><option>Business automation</option><option>Custom application</option><option>Not sure yet</option></select></label></div><label>Tell us about the problem<textarea required rows="5" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} placeholder="Example: We receive orders on WhatsApp and enter them into Excel every evening..."></textarea></label><button className="btn primary full" type="submit">Start the conversation <span>→</span></button><small className="form-note">No obligation. We'll first understand the problem.</small></form>}</div></div>
+          <div className="contact-grid"><div><span className="section-kicker">START A PROJECT</span><h2>Have a manual process that <span>wastes your team's time?</span></h2><p>Tell us how you currently manage it. We'll help you identify what can be automated and what a practical solution could look like.</p><div className="contact-points"><a href={`mailto:${CONTACT_EMAIL}`}>✉ {CONTACT_EMAIL}</a><a href={WHATSAPP_URL} target="_blank" rel="noreferrer">◉ WhatsApp us</a><span>⌖ Serving businesses across India</span></div></div><div className="form-card">{submitted ? <div className="success"><div className="success-icon">✓</div><h3>Enquiry sent.</h3><p>Thanks for contacting Zion Tech. Your enquiry has been sent to <strong>{CONTACT_EMAIL}</strong>. We'll get back to you soon.</p><button className="btn primary" onClick={() => setSubmitted(false)}>Send another enquiry</button></div> : <form onSubmit={submit}><div className="form-row"><label>Name<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Your name"/></label><label>Business<input required value={form.business} onChange={e=>setForm({...form,business:e.target.value})} placeholder="Business name"/></label></div><div className="form-row"><label>Phone / WhatsApp<input required value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="Your number"/></label><label>What do you need?<select required value={form.need} onChange={e=>setForm({...form,need:e.target.value})}><option value="">Select one</option><option>Business website</option><option>Business automation</option><option>Custom application</option><option>Not sure yet</option></select></label></div><label>Tell us about the problem<textarea required rows="5" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} placeholder="Example: We receive orders on WhatsApp and enter them into Excel every evening..."></textarea></label><button className="btn primary full" type="submit">Start the conversation <span>→</span></button><small className="form-note">No obligation. We'll first understand the problem.</small></form>}</div></div>
         </section>
       </main>
 

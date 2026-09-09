@@ -26,7 +26,7 @@ The production files are generated in `dist/`.
 
 Update the placeholder contact details in `src/App.jsx`:
 
-- `CONTACT_EMAIL in src/App.jsx`
+- `CONTACT_EMAIL` and `WHATSAPP_NUMBER` in `src/App.jsx`
 - `WHATSAPP_NUMBER in src/App.jsx`
 
 Replace them with your real business email and WhatsApp number.
@@ -50,3 +50,20 @@ The current form uses a `mailto:` action so it can work without a backend. For a
 ## Important
 
 The portfolio cards are explicitly labelled as concept projects. Replace them with real client case studies as you build your client base.
+
+
+## Enquiry flow
+
+The contact form submits enquiries to `ziontech.office@gmail.com` using FormSubmit's AJAX endpoint. No Gmail password or API key is stored in the project.
+
+### First-time activation
+
+FormSubmit may send a confirmation/activation email to `ziontech.office@gmail.com` when the endpoint receives its first submission. Open that email and confirm the activation if requested. After activation, future form submissions will be delivered to the inbox.
+
+### WhatsApp
+
+WhatsApp buttons open `+91 7010144926` with a pre-filled enquiry message.
+
+### Important
+
+The website never contains your Gmail password. If you later want a fully branded transactional-email system, we can move the form to a provider such as Resend/Formspree with a server-side or Vercel function integration.
